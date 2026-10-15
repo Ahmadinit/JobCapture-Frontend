@@ -37,9 +37,9 @@ export function Card({ title, children, wide }) {
   );
 }
 
-export function Kpi({ label, value, sub }) {
+export function Kpi({ label, value, sub, hint }) {
   return (
-    <div className="adm-kpi">
+    <div className="adm-kpi" title={hint}>
       <span className="adm-kpi-label">{label}</span>
       <strong className="adm-kpi-value">{value}</strong>
       {sub && <span className="adm-kpi-sub">{sub}</span>}

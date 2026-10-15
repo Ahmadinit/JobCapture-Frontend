@@ -111,7 +111,7 @@ export default function Dashboard({ onLogout }) {
       {data && (
         <div className={status === 'loading' ? 'adm-body is-loading' : 'adm-body'}>
           <div className="adm-kpis">
-            <Kpi label="Unique visitors" value={fmt(t.visitors)} sub={`${fmt(t.newVisitors)} new · ${fmt(t.returningVisitors)} returning`} />
+            <Kpi label="Unique visitors" value={fmt(t.visitors)} sub={`${fmt(t.newVisitors)} new · ${fmt(t.returningVisitors)} returning`} hint="New: first-ever visit, and only one visit in this period. Returning: seen before this period, or came back within it." />
             <Kpi label="Visits (sessions)" value={fmt(t.sessions)} sub={`${t.sessionsPerVisitor} per visitor`} />
             <Kpi label="Page views" value={fmt(t.pageviews)} sub={`${t.pagesPerSession} per visit`} />
             <Kpi label="Bounce rate" value={`${t.bounceRate}%`} sub="left without interacting" />
