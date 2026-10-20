@@ -4,7 +4,7 @@ import { fetchJobs } from '../api/jobsApi';
 import { EMPTY_FILTERS, PAGE_SIZE } from '../constants';
 import { readFiltersFromUrl, writeFiltersToUrl } from '../utils/filtersUrl';
 
-const FILTER_KEYS = ['categories', 'skills', 'cities', 'remoteType', 'experience'];
+const FILTER_KEYS = ['countries', 'cities', 'remoteType', 'remoteScope', 'categories', 'skills', 'experience'];
 
 // Records what people searched/filtered for (and how many results it gave) — once per change.
 function trackFilterChanges(prev, next, total) {

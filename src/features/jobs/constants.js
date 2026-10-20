@@ -12,6 +12,12 @@ export const REMOTE_OPTIONS = [
   { value: 'onsite', label: 'Onsite' },
 ];
 
+export const REMOTE_SCOPE_OPTIONS = [
+  { value: 'Pakistan only', label: 'Pakistan only' },
+  { value: 'MENA only', label: 'MENA / GCC only' },
+  { value: 'Worldwide', label: 'Worldwide' },
+];
+
 // Buckets match the backend: they filter on the post's lowest years-of-experience bound.
 export const EXPERIENCE_OPTIONS = [
   { value: 'unspecified', label: 'Not specified' },
@@ -24,10 +30,13 @@ export const EXPERIENCE_OPTIONS = [
 export const EMPTY_FILTERS = {
   search: '',
   track: '',
+  region: '',
+  countries: [],
+  cities: [],
+  remoteType: [],
+  remoteScope: [],
   categories: [],
   skills: [],
   skillsMatch: 'any',
-  cities: [],
-  remoteType: [],
   experience: [],
 };

@@ -79,9 +79,24 @@ export default function HomePage() {
             <SearchBar value={filters.search} onCommit={v => updateFilter('search', v)} />
 
             <div className="results-bar">
-              <p className="results-count" aria-live="polite">{countNode}</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <p className="results-count" aria-live="polite" style={{ margin: 0 }}>{countNode}</p>
+                <button
+                  className="btn btn-secondary"
+                  onClick={retry}
+                  style={{ padding: '0.2rem 0.55rem', fontSize: '0.75rem', borderRadius: '6px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  title="Check for newly posted roles"
+                  aria-label="Refresh job listings"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                  </svg>
+                  Check for new roles
+                </button>
+              </div>
               <ActiveFilters chips={chips} onRemove={removeValue} />
             </div>
+
 
             {status === 'loading' && (
               <div className="job-list" aria-busy="true">

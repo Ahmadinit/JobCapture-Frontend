@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import AdminLogin from './components/AdminLogin.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import CompaniesAdmin from './components/CompaniesAdmin.jsx';
+import SyncAndIngestAdmin from './components/SyncAndIngestAdmin.jsx';
 import { clearToken, getToken } from './api/adminApi';
 import './admin.css';
 
@@ -30,8 +31,12 @@ export default function AdminApp() {
       <nav className="adm-tabs" aria-label="Admin sections">
         <button className={tab === 'analytics' ? 'is-on' : ''} onClick={() => setTab('analytics')}>Analytics</button>
         <button className={tab === 'companies' ? 'is-on' : ''} onClick={() => setTab('companies')}>Companies</button>
+        <button className={tab === 'sync' ? 'is-on' : ''} onClick={() => setTab('sync')}>Fetch & Ingest</button>
       </nav>
-      {tab === 'analytics' ? <Dashboard onLogout={logout} /> : <CompaniesAdmin onLogout={logout} />}
+      {tab === 'analytics' && <Dashboard onLogout={logout} />}
+      {tab === 'companies' && <CompaniesAdmin onLogout={logout} />}
+      {tab === 'sync' && <SyncAndIngestAdmin onLogout={logout} />}
     </>
   );
 }
+

@@ -50,3 +50,15 @@ export async function adminRequest(path, { method = 'GET', body, params } = {}) 
   if (!response.ok) throw new Error(data?.message || `Request failed (${response.status})`);
   return data;
 }
+
+export async function triggerJobSync() {
+  return adminRequest('/api/admin/sync/trigger', { method: 'POST' });
+}
+
+export async function fetchSyncStatus() {
+  return adminRequest('/api/admin/sync/status', { method: 'GET' });
+}
+
+export async function quickIngestJob(rawText) {
+  return adminRequest('/api/jobs/ingest', { method: 'POST', body: { rawText } });
+}

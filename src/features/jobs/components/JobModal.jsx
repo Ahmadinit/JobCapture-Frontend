@@ -28,14 +28,24 @@ export default function JobModal({ job, onClose }) {
     };
   }, [onClose]);
 
+  const locationLabel = [
+    job.cities?.length ? job.cities.join(', ') : null,
+    job.country || null,
+  ].filter(Boolean).join(', ') || 'Not specified';
+
   const facts = [
-    { label: 'Work type', value: job.remoteType ? capitalize(job.remoteType) : 'Not specified' },
+    {
+      label: 'Work type',
+      value: job.remoteType
+        ? `${capitalize(job.remoteType)}${job.remoteScope ? ` (${job.remoteScope})` : ''}`
+        : 'Not specified',
+    },
     {
       label: 'Experience',
       value: job.experienceYears == null ? 'Not specified' : experienceLabel(job.experienceYears),
     },
-    { label: 'Location', value: job.cities?.length ? job.cities.join(', ') : 'Not specified' },
-    { label: 'Posted', value: formatDate(job.createdAt) },
+    { label: 'Location', value: locationLabel },
+    { label: 'Posted', value: formatDate(job.postedAt || job.createdAt) },
   ].filter(f => f.value);
 
   const hasFooter = job.applicationLink || job.contactEmail || job.sourceUrl;
